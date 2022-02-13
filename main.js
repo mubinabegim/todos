@@ -2,8 +2,7 @@ let todos = [
     { id: 1, title: "Create a button" },
     { id: 2, title: "Create a edit button" },
     { id: 3, title: "Create a delete button" },
-    { id: 4, title: "Create a add button" }
-];
+    { id: 4, title: "Create a add button" }];
 let whichEl = null,
     isEdit = false;
 
@@ -11,7 +10,7 @@ let whichEl = null,
 const form1 = document.querySelector("#form1"),
     form2 = document.querySelector("#form2"),
     form3 = document.querySelector("#form3");
-todos_ul1 = document.querySelector("#ul1"),
+    todos_ul1 = document.querySelector("#ul1"),
     todos_ul2 = document.querySelector("#ul2"),
     todos_ul3 = document.querySelector("#ul3"),
     inputs = document.querySelectorAll("input"),
@@ -21,7 +20,6 @@ todos_ul1 = document.querySelector("#ul1"),
 // writeToDos1
 const WriteTodos1 = () => {
     todos_ul1.innerHTML = "";
-
     todos.map((todo, index) => {
         todos_ul1.innerHTML += `<li>
         <span>${index + 1}. ${todo.title}</span>
@@ -34,9 +32,7 @@ const WriteTodos1 = () => {
 }
 // WriteTodos2
 const WriteTodos2 = () => {
-
     todos_ul2.innerHTML = "";
-
     todos.map((todo, index) => {
         todos_ul2.innerHTML += `<li>
         <span>${index + 1}. ${todo.title}</span>
@@ -63,11 +59,11 @@ const WriteTodos3 = () => {
 }
 // create via form1
 form1.onsubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let newToDo = {
         id: Date.now(),
-        title: e.target[0].value,
-    }
+        title: e.target[0].value
+    };
     if (newToDo.title !== "") {
         if (!isEdit) {
             todos = [...todos, newToDo];
@@ -77,7 +73,6 @@ form1.onsubmit = (e) => {
             todos = todos.map(todo => {
                 if (todo.id === whichEl) {
                     todo.title = newToDo.title;
-
                 };
                 return todo;
             });
@@ -90,19 +85,17 @@ form1.onsubmit = (e) => {
             buttons[0].innerHTML = `
                 <i class="bi bi-plus"></i>
                 <span> Edit</span>`
-        }
+        };
 
     } else alert("Fill all the gaps")
-
-
-}
+};
 // create via form2
 form2.onsubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let newToDo = {
         id: Date.now(),
         title: e.target[0].value,
-    }
+    };
     if (newToDo.title !== "") {
         if (!isEdit) {
             todos = [...todos, newToDo];
@@ -112,7 +105,6 @@ form2.onsubmit = (e) => {
             todos = todos.map(todo => {
                 if (todo.id === whichEl) {
                     todo.title = newToDo.title;
-
                 };
                 return todo;
             });
@@ -128,17 +120,15 @@ form2.onsubmit = (e) => {
         }
 
     } else alert("Fill all the gaps")
-
-
 }
 
 // create via form3
 form3.onsubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let newToDo = {
         id: Date.now(),
         title: e.target[0].value
-    }
+    };
     if (newToDo.title !== "") {
         if (!isEdit) {
             todos = [...todos, newToDo];
@@ -148,7 +138,6 @@ form3.onsubmit = (e) => {
             todos = todos.map(todo => {
                 if (todo.id === whichEl) {
                     todo.title = newToDo.title;
-
                 };
                 return todo;
             });
@@ -162,9 +151,7 @@ form3.onsubmit = (e) => {
                 <i class="bi bi-plus"></i>
                 <span> Edit</span>`
         }
-
     } else alert("Fill all the gaps")
-
 }
 
 const DeleteToDo1 = (id) => {
@@ -174,6 +161,7 @@ const DeleteToDo1 = (id) => {
         WriteTodos1();
     }
 }
+
 const DeleteToDo2 = (id) => {
     let confirmation = window.confirm("Are you sure to delete this item?");
     if (confirmation) {
@@ -181,6 +169,7 @@ const DeleteToDo2 = (id) => {
         WriteTodos2();
     }
 }
+
 const DeleteToDo3 = (id) => {
     let confirmation = window.confirm("Are you sure to delete this item?");
     if (confirmation) {
