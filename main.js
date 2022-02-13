@@ -5,7 +5,8 @@ let todos = [
     { id: 4, title: "Create a add button" }];
 let whichEl = null,
     isEdit = false;
-
+let todos2 = [],
+    todos3 = [];
 // constants
 const form1 = document.querySelector("#form1"),
     form2 = document.querySelector("#form2"),
@@ -33,7 +34,7 @@ const WriteTodos1 = () => {
 // WriteTodos2
 const WriteTodos2 = () => {
     todos_ul2.innerHTML = "";
-    todos.map((todo, index) => {
+    todos2.map((todo, index) => {
         todos_ul2.innerHTML += `<li>
         <span>${index + 1}. ${todo.title}</span>
         <span style="display:flex;">
@@ -47,7 +48,7 @@ const WriteTodos2 = () => {
 const WriteTodos3 = () => {
 
     todos_ul3.innerHTML = "";
-    todos.map((todo, index) => {
+    todos3.map((todo, index) => {
         todos_ul3.innerHTML += `<li>
         <span>${index + 1}. ${todo.title}</span>
         <span style="display:flex;">
@@ -98,11 +99,11 @@ form2.onsubmit = (e) => {
     };
     if (newToDo.title !== "") {
         if (!isEdit) {
-            todos = [...todos, newToDo];
+            todos2 = [...todos2, newToDo];
             form2.reset();
             WriteTodos2();
         } else {
-            todos = todos.map(todo => {
+            todos2 = todos2.map(todo => {
                 if (todo.id === whichEl) {
                     todo.title = newToDo.title;
                 };
@@ -131,11 +132,11 @@ form3.onsubmit = (e) => {
     };
     if (newToDo.title !== "") {
         if (!isEdit) {
-            todos = [...todos, newToDo];
+            todos3 = [...todos3, newToDo];
             form3.reset();
             WriteTodos3();
         } else {
-            todos = todos.map(todo => {
+            todos2 = todos2.map(todo => {
                 if (todo.id === whichEl) {
                     todo.title = newToDo.title;
                 };
@@ -165,7 +166,7 @@ const DeleteToDo1 = (id) => {
 const DeleteToDo2 = (id) => {
     let confirmation = window.confirm("Are you sure to delete this item?");
     if (confirmation) {
-        todos = todos.filter(user => user.id !== id);
+        todos2 = todos2.filter(user => user.id !== id);
         WriteTodos2();
     }
 }
@@ -173,7 +174,7 @@ const DeleteToDo2 = (id) => {
 const DeleteToDo3 = (id) => {
     let confirmation = window.confirm("Are you sure to delete this item?");
     if (confirmation) {
-        todos = todos.filter(user => user.id !== id);
+        todos3 = todos3.filter(user => user.id !== id);
         WriteTodos3();
     }
 }
@@ -202,7 +203,7 @@ const EditToDo2 = (id) => {
     buttons[1].innerHTML = `
     <i class="bi bi-pencil"></i>
     <span> Edit</span>`
-    todos.map(todo => {
+    todos2.map(todo => {
         if (todo.id === id) {
             inputs[1].value = todo.title;
         }
@@ -216,7 +217,7 @@ const EditToDo3 = (id) => {
     buttons[2].innerHTML = `
     <i class="bi bi-pencil"></i>
     <span> Edit</span>`
-    todos.map(todo => {
+    todos3.map(todo => {
         if (todo.id === id) {
             inputs[2].value = todo.title;
         }
